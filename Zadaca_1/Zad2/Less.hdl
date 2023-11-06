@@ -1,0 +1,12 @@
+// Kolega mi je poslao implementaciju chipa Less i Comp4 kako bih mogao implementirati Min i Max.
+CHIP Less {
+    IN a[16], b[16];
+    OUT out;
+
+    PARTS:
+    Comp4(a = a[0..3], b = b[0..3], e = true, l = false, out[0] = l1, out[1] = e1);
+    Comp4(a = a[4..7], b = b[4..7], e = e1, l = l1, out[0] = l2, out[1] = e2);
+    Comp4(a = a[8..11], b = b[8..11], e = e2, l = l2, out[0] = l3, out[1] = e3);
+    Comp4(a = a[12..15], b = b[12..15], e = e3, l = l3, out[0] = l4, out[1] = e4);
+    And(a = l4, b = l4, out = out);
+}

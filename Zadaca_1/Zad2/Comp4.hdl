@@ -1,0 +1,43 @@
+CHIP Comp4 {
+    IN a[4], b[4], e, l;
+    OUT out[2];
+
+    PARTS:
+    Not(in = a[2], out = a2);
+    Not(in = a[3], out = a3);
+    Not(in = a[1], out = a1);
+    Not(in = a[0], out = a0);
+
+    And(a = a3, b = b[3], out = o1);
+    
+    Xor(a = a[3], b = b[3], out = out1);
+    Not(in = out1, out = out1n);
+    And(a = a2, b = b[2], out = out2);
+    And(a = out1n, b = out2, out = o2);
+    
+    Xor(a = a[2], b = b[2], out = out3);
+    Not(in = out3, out = out3n);
+    And(a = a1, b = b[1], out = out4);
+    And(a = out1n, b = out3n, out = out5);
+    And(a = out4, b = out5, out = o3);
+    
+    Xor(a = a[1], b = b[1], out = out6);
+    Not(in = out6, out = out6n);
+    And(a = a0, b = b[0], out = out7);
+    And(a = out5, b = out6n, out = out8);
+    And(a = out7, b = out8, out = o4);
+
+    Or(a = o1, b = o2, out = out01);
+    Or(a = out01, b = o3, out = out02);
+    Or(a = out02, b = o4, out = out03);
+
+    Xor(a = a[0], b = b[0], out = oe1);
+    Not(in = oe1, out = oe1n);
+    And(a = out1n, b = out3n, out = oe2);
+    And(a = out6n, b = oe1n, out = oe3);
+    And(a = oe2, b = oe3, out = oe4);
+    And(a = oe4, b = e, out = out[1]);
+
+    And(a = oe4, b = l, out = out04);
+    Or(a = out04, b = out03, out = out[0]);
+}
