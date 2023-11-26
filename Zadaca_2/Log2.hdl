@@ -1,0 +1,13 @@
+CHIP Log2 {
+    IN in[16];
+    OUT out[16];
+
+    PARTS:
+    Clz(in = in, out = zeros);
+    ALU(x[0..3] = true, x[4..15] = false, y = zeros, zx = false, nx = true, 
+                                         zy = false, ny = false, 
+                                         f = true, no = true,
+                                         out = res);
+
+    Mux16(a = res, b[0..15] = true, sel = in[15], out = out);
+}

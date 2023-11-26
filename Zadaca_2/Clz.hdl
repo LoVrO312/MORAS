@@ -1,0 +1,39 @@
+CHIP Clz {
+    IN in[16];
+    OUT out[16];
+
+    PARTS:
+    Mux(a = true, b = false, sel = in[15], out = checker15);
+    Mux(a = checker15, b = false, sel = in[14], out = checker14);
+    Mux(a = checker14, b = false, sel = in[13], out = checker13);
+    Mux(a = checker13, b = false, sel = in[12], out = checker12);
+    Mux(a = checker12, b = false, sel = in[11], out = checker11);
+    Mux(a = checker11, b = false, sel = in[10], out = checker10);
+    Mux(a = checker10, b = false, sel = in[9], out = checker9);
+    Mux(a = checker9, b = false, sel = in[8], out = checker8);
+    Mux(a = checker8, b = false, sel = in[7], out = checker7);
+    Mux(a = checker7, b = false, sel = in[6], out = checker6);
+    Mux(a = checker6, b = false, sel = in[5], out = checker5);
+    Mux(a = checker5, b = false, sel = in[4], out = checker4);
+    Mux(a = checker4, b = false, sel = in[3], out = checker3);
+    Mux(a = checker3, b = false, sel = in[2], out = checker2);
+    Mux(a = checker2, b = false, sel = in[1], out = checker1);
+    Mux(a = checker1, b = false, sel = in[0], out = checker0);
+    
+    Add16(a = false, b[0] = checker15, b[1..15] = false, out = counter15);
+    Add16(a = counter15, b[0] = checker14, b[1..15] = false, out = counter14);
+    Add16(a = counter14, b[0] = checker13, b[1..15] = false, out = counter13);
+    Add16(a = counter13, b[0] = checker12, b[1..15] = false, out = counter12);
+    Add16(a = counter12, b[0] = checker11, b[1..15] = false, out = counter11);
+    Add16(a = counter11, b[0] = checker10, b[1..15] = false, out = counter10);
+    Add16(a = counter10, b[0] = checker9, b[1..15] = false, out = counter9);
+    Add16(a = counter9, b[0] = checker8, b[1..15] = false, out = counter8);
+    Add16(a = counter8, b[0] = checker7, b[1..15] = false, out = counter7);
+    Add16(a = counter7, b[0] = checker6, b[1..15] = false, out = counter6);
+    Add16(a = counter6, b[0] = checker5, b[1..15] = false, out = counter5);
+    Add16(a = counter5, b[0] = checker4, b[1..15] = false, out = counter4);
+    Add16(a = counter4, b[0] = checker3, b[1..15] = false, out = counter3);
+    Add16(a = counter3, b[0] = checker2, b[1..15] = false, out = counter2);
+    Add16(a = counter2, b[0] = checker1, b[1..15] = false, out = counter1);
+    Add16(a = counter1, b[0] = checker0, b[1..15] = false, out = out);
+}
