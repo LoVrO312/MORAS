@@ -14,19 +14,29 @@ $WHILE(i)
     @max
     M = D;
 
-    // seta j na element koji prethodi i
-    @i
-    D = M;
-    @j
-    M = D - 1;
-
     // provjera
     @j
     D = M;
     @END
     D ; JLT
 
+    
+    // seta j na element koji prethodi i
+    @i
+    D = M;
+    @j
+    M = D;
+
+    // provjera
+    @j
+    D = M;
+    @END
+    D ; JLT
+    
     $WHILE(j)
+        @j
+        M = M - 1;
+
         // uzimam vrijednost sa j + 100
         @j
         D = M;
@@ -55,7 +65,7 @@ $WHILE(i)
         @i
         D = M;
         @100
-        D = D + M;
+        D = D + A;
         @ind_i
         M = D;
         @tmp
@@ -68,7 +78,7 @@ $WHILE(i)
         @j
         D = M;
         @100
-        D = D + M;
+        D = D + A;
         @ind_j
         M = D;
         @max
@@ -80,10 +90,13 @@ $WHILE(i)
         $SWP(max, tmp)
 
         (SKIP)
+        // provjera
         @j
-        M = M - 1;
+        D = M;
+        @jump_j
+        D ; JLT
     $END
-
+    (jump_j)
 $END
 
 
