@@ -1,0 +1,48 @@
+push constant 10
+push constant 3
+call Mod.mod 2 // returna 1
+
+
+function Mod.mod 2
+push argument 0
+push argument 1
+call  Mod.divmod 2
+
+push temp 1
+return
+
+
+
+function Mod.divmod 2
+push constant 0
+pop local 0
+push argument 0
+pop local 1
+
+
+label DIV_LOOP_START
+push local 1
+push argument 1
+lt
+if-goto DIV_LOOP_END
+
+push local 0
+push constant 1
+add
+pop local 0
+
+push local 1
+push argument 1
+sub
+pop local 1
+
+goto DIV_LOOP_START
+label DIV_LOOP_END
+
+
+push local 0
+pop temp 0
+push local 1
+pop temp 1
+
+return

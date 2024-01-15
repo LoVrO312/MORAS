@@ -1,0 +1,39 @@
+push constant 4
+push constant 2
+push constant 0
+call Max.max 3 // returna 4
+
+
+
+
+
+function Max.max 3
+	push argument 0
+	push argument 1
+	gt
+	if-goto AgtB
+	goto BgtA
+
+label AgtB
+	push argument 0
+	push argument 2
+	gt
+	if-goto Amax
+	goto Cmax
+
+label BgtA
+	push argument 1
+	push argument 2
+	gt
+	if-goto Bmax
+	goto Cmax
+
+label Amax
+	push argument 0
+	return
+label Bmax
+	push argument 1
+	return
+label Cmax
+	push argument 2
+	return
