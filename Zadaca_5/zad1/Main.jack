@@ -1,0 +1,32 @@
+class Main
+{
+    function void main()
+    {
+        var Array A;
+        var int i;
+
+        let A = Array.new(7);
+
+        let A[0] = 9;
+        let A[1] = -8;
+        let A[2] = 5;
+        let A[3] = -8;
+        let A[4] = 11;
+        let A[5] = 0;
+        let A[6] = 10;
+
+        let A = Sort.qsort(A, 7);
+
+        let i = 0;
+        while(i < 7)
+        {
+            do Output.printInt(A[i]);
+            do Output.printChar(32);
+            let i = i + 1;
+        }
+
+        do A.dispose();
+
+        return;
+    }
+}

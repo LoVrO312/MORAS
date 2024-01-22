@@ -1,0 +1,39 @@
+class Sort
+{
+    function Array qsort(Array A, int n)
+    {
+        return Sort.quicksort(A, 0, n - 1);
+    }
+
+    function Array quicksort(Array A, int l, int r)
+    {
+        var int pivot, j, i, temp;
+        if (l < r)
+        {
+            let pivot = A[l];
+            let j = l;
+            let i = l + 1;
+
+            while(~(i > r))
+            {
+                if(A[i] < pivot)
+                {
+                    let j = j + 1;
+                    let temp = A[i];
+                    let A[i] = A[j];
+                    let A[j] = temp;
+                }
+                let i = i + 1;
+            }
+
+            let temp = A[j];
+            let A[j] = A[l];
+            let A[l] = temp;
+
+            let A = Sort.quicksort(A, l, j - 1);
+            let A = Sort.quicksort(A, j + 1, r);
+        }
+
+        return A;
+    }
+}
